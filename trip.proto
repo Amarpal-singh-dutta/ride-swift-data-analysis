@@ -1,0 +1,32 @@
+// trip.proto
+syntax = "proto3";
+
+enum TripStatus {
+  REQUESTED  = 0;
+  ONGOING    = 1;
+  COMPLETED  = 2;
+  CANCELLED  = 3;
+}
+
+enum VehicleType {
+  BIKE       = 0;
+  AUTO       = 1;
+  CAB        = 2;
+  SUV        = 3;
+}
+
+message Trip {
+  int32       trip_id       = 1;
+  int32       driver_id     = 2;
+  int32       rider_id      = 3;
+  string      city          = 4;
+  VehicleType vehicle_type  = 5;
+  float       fare          = 6;
+  float       distance_km   = 7;
+  int64       timestamp     = 8;
+  TripStatus  status        = 9;
+}
+
+message TripBatch {
+  repeated Trip trips = 1;
+}
